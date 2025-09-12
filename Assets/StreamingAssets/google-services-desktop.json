@@ -2,7 +2,8 @@
   "project_info": {
     "project_number": "718786259408",
     "project_id": "tattoovision-2a589",
-    "storage_bucket": "tattoovision-2a589.firebasestorage.app"
+    "storage_bucket": "tattoovision-2a589.firebasestorage.app",
+    "database_url": "https://tattoovision-2a589-default-rtdb.firebaseio.com/"
   },
   "client": [
     {
