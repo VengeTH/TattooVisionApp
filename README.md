@@ -5,6 +5,7 @@ A Unity-based augmented reality application that leverages computer vision and A
 ## 🌟 Features
 
 ### Core Functionality
+
 - **Skin Scanner**: Advanced tattoo detection and analysis using OpenCV
 - **AR Visualization**: Real-time augmented reality tattoo preview on skin
 - **Interactive Dashboard**: User-friendly interface for managing tattoo designs
@@ -13,6 +14,7 @@ A Unity-based augmented reality application that leverages computer vision and A
 - **Cross-Platform Support**: Android and iOS deployment capabilities
 
 ### Technical Features
+
 - **Computer Vision**: OpenCV integration for image processing
 - **XR/AR Foundation**: Unity's AR framework for immersive experiences
 - **Real-time Camera**: Live camera feed with overlay capabilities
@@ -40,30 +42,36 @@ A Unity-based augmented reality application that leverages computer vision and A
 ## 🚀 Installation & Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/your-username/TattooVisionApp2.git
 cd TattooVisionApp2-main
 ```
 
 ### 2. Open in Unity
+
 1. Launch Unity Hub
 2. Add project from disk
 3. Select the cloned directory
 4. Open with Unity 2021.3+
 
 ### 3. Firebase Configuration
+
 1. Create a Firebase project at https://console.firebase.google.com/
 2. Enable Authentication, Firestore Database, and Storage
 3. Download `google-services.json` and place it in `Assets/`
 4. Configure Firebase settings in Unity
 
 ### 4. OpenCV Setup
+
 - OpenCV for Unity is already included in the project
 - No additional setup required for basic functionality
 - Advanced features may require additional OpenCV modules
 
 ### 5. Build Settings
+
 1. **Android**:
+
    - Go to File > Build Settings
    - Select Android platform
    - Set minimum API level to 24
@@ -77,6 +85,7 @@ cd TattooVisionApp2-main
 ## 📱 Usage
 
 ### Basic Operation
+
 1. **Launch App**: Start the application on your device
 2. **Grant Permissions**: Allow camera and storage access
 3. **Skin Scanning**: Use camera to scan skin areas
@@ -84,6 +93,7 @@ cd TattooVisionApp2-main
 5. **Design Management**: Browse and manage tattoo collections
 
 ### Development Workflow
+
 1. **Scene Navigation**: Use `Assets/Scenes/` for different app sections
 2. **Script Editing**: Modify behavior in `Assets/Script/`
 3. **UI Customization**: Adjust interfaces in `Assets/UX_UI/`
@@ -109,6 +119,7 @@ Assets/
 ## 🔧 Key Components
 
 ### Core Scripts
+
 - **SkinScanner.cs**: Handles tattoo detection and analysis
 - **ARCameraUIManager.cs**: Manages AR camera and overlays
 - **UIManager.cs**: Controls user interface flow
@@ -116,6 +127,7 @@ Assets/
 - **NavigationManager.cs**: Handles scene transitions
 
 ### Firebase Integration
+
 - User authentication
 - Data synchronization
 - Cloud storage for designs
@@ -124,11 +136,14 @@ Assets/
 ## 🐛 Troubleshooting
 
 ### Common Issues
+
 1. **Camera Permission Denied**
+
    - Ensure camera permissions are granted in device settings
    - Check Unity Player Settings for camera usage description
 
 2. **AR Not Working**
+
    - Verify ARCore/ARKit is installed on device
    - Check XR Plug-in Management settings
 
@@ -138,6 +153,7 @@ Assets/
    - Validate Firebase project settings
 
 ### Debug Mode
+
 - Enable development build for detailed logging
 - Check Unity Console for error messages
 - Use Android Logcat for device-specific issues
@@ -158,6 +174,7 @@ Assets/
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow Unity coding standards
 - Use meaningful commit messages
 - Test on multiple devices before submitting
@@ -170,6 +187,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👥 Support
 
 For support and questions:
+
 - Create an issue in this repository
 - Check the Unity documentation
 - Review Firebase documentation
