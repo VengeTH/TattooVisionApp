@@ -4,14 +4,21 @@ using UnityEngine.XR.ARSubsystems;
 using Unity.Collections;
 using OpenCvSharp;
 using static OpenCvSharp.Unity;
-
-
+using System.Collections.Generic;
 
 public class SkinScanner : MonoBehaviour
 {
     public ARCameraManager cameraManager;
-
+    public ARTattooManager tattooManager; // Reference to tattoo manager
+    public ARRaycastManager arRaycastManager;
+    
+    [Header("Skin Detection Settings")]
+    public bool enableSkinDetection = true;
+    public float skinDetectionThreshold = 0.7f;
+    
     private Texture2D cameraTexture;
+    private bool isSkinDetected = false;
+    private Vector2 lastDetectedSkinCenter;
 
     void OnEnable()
     {
@@ -90,11 +97,80 @@ public class SkinScanner : MonoBehaviour
             Cv2.Rectangle(rgbaMat, rect, new Scalar(0, 255, 0), 2);
         }
 
-        // OPTIONAL: Convert back to Texture2D and show result on screen
-        Texture2D debugTexture = MatToTexture(rgbaMat);
-        GetComponent<Renderer>().material.mainTexture = debugTexture;
+        // OPTIONAL: Convert back to Texture2D and show result on screen (only if renderer exists)
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null && renderer.material != null)
+        {
+            Texture2D debugTexture = MatToTexture(rgbaMat);
+            renderer.material.mainTexture = debugTexture;
+        }
 
-        // TODO: Add skin pattern detection here
-        // Once detected, call tattoo placement
+        // Process skin detection results for tattoo placement
+        if (contours.Length > 0 && enableSkinDetection)
+        {
+            // Find the largest skin area
+            int largestContourIndex = -1;
+            double largestArea = 0;
+            
+            for (int i = 0; i < contours.Length; i++)
+            {
+                double area = Cv2.ContourArea(contours[i]);
+                if (area > largestArea)
+                {
+                    largestArea = area;
+                    largestContourIndex = i;
+                }
+            }
+            
+            if (largestContourIndex >= 0)
+            {
+                // Get center of largest skin area
+                var rect = Cv2.BoundingRect(contours[largestContourIndex]);
+                Vector2 skinCenter = new Vector2(
+                    rect.X + rect.Width / 2,
+                    rect.Y + rect.Height / 2
+                );
+                
+                // Convert to screen coordinates
+                Vector2 screenPoint = new Vector2(
+                    (skinCenter.x / frameTexture.width) * Screen.width,
+                    ((frameTexture.height - skinCenter.y) / frameTexture.height) * Screen.height
+                );
+                
+                isSkinDetected = true;
+                lastDetectedSkinCenter = screenPoint;
+                
+                // Perform AR raycast at skin center
+                PerformARRaycastAtSkinLocation(screenPoint);
+            }
+        }
+    }
+    
+    void PerformARRaycastAtSkinLocation(Vector2 screenPoint)
+    {
+        if (arRaycastManager == null || tattooManager == null)
+            return;
+        
+        // Perform AR raycast to find 3D position
+        List<ARRaycastHit> hits = new List<ARRaycastHit>();
+        if (arRaycastManager.Raycast(screenPoint, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+        {
+            ARRaycastHit hit = hits[0];
+            
+            // Notify tattoo manager about skin location
+            tattooManager.PlaceTattooOnSkin(hit.pose.position, hit.pose.up);
+            
+            Debug.Log($"Skin detected at position: {hit.pose.position}");
+        }
+    }
+    
+    public bool IsSkinDetected()
+    {
+        return isSkinDetected;
+    }
+    
+    public Vector2 GetLastDetectedSkinCenter()
+    {
+        return lastDetectedSkinCenter;
     }
 }
