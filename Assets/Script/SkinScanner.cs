@@ -54,54 +54,47 @@ public class SkinScanner : MonoBehaviour
 
     void ProcessFrame(Texture2D frameTexture)
     {
+        // Convert Unity Texture2D to OpenCV Mat (RGBA)
         Mat rgbaMat = TextureToMat(frameTexture);
 
+        // Convert from RGBA to BGR
+        Mat bgrMat = new Mat();
+        Cv2.CvtColor(rgbaMat, bgrMat, ColorConversionCodes.RGBA2BGR);
 
-        // TODO: Add skin pattern detection here
-        void ProcessFrame(Texture2D frameTexture)
+        // Convert from BGR to YCrCb color space
+        Mat ycrcbMat = new Mat();
+        Cv2.CvtColor(bgrMat, ycrcbMat, ColorConversionCodes.BGR2YCrCb);
+
+        // Define skin color range in YCrCb
+        Scalar lower = new Scalar(0, 133, 77);
+        Scalar upper = new Scalar(255, 173, 127);
+
+        // Apply threshold to create a skin mask
+        Mat skinMask = new Mat();
+        Cv2.InRange(ycrcbMat, lower, upper, skinMask);
+
+        // Optional: Clean up the mask with blur and morphology
+        Cv2.GaussianBlur(skinMask, skinMask, new Size(3, 3), 0);
+        Cv2.Erode(skinMask, skinMask, new Mat(), iterations: 1);
+        Cv2.Dilate(skinMask, skinMask, new Mat(), iterations: 1);
+
+        // Find contours on the skin mask
+        Point[][] contours;
+        HierarchyIndex[] hierarchy;
+        Cv2.FindContours(skinMask, out contours, out hierarchy, RetrievalModes.External, ContourApproximationModes.ApproxSimple);
+
+        // Draw rectangles around detected skin areas
+        foreach (var contour in contours)
         {
-            // Convert Unity Texture2D to OpenCV Mat (RGBA)
-            Mat rgbaMat = TextureToMat(frameTexture);
-
-            // Convert from RGBA to BGR
-            Mat bgrMat = new Mat();
-            Cv2.CvtColor(rgbaMat, bgrMat, ColorConversionCodes.RGBA2BGR);
-
-            // Convert from BGR to YCrCb color space
-            Mat ycrcbMat = new Mat();
-            Cv2.CvtColor(bgrMat, ycrcbMat, ColorConversionCodes.BGR2YCrCb);
-
-            // Define skin color range in YCrCb
-            Scalar lower = new Scalar(0, 133, 77);
-            Scalar upper = new Scalar(255, 173, 127);
-
-            // Apply threshold to create a skin mask
-            Mat skinMask = new Mat();
-            Cv2.InRange(ycrcbMat, lower, upper, skinMask);
-
-            // Optional: Clean up the mask with blur and morphology
-            Cv2.GaussianBlur(skinMask, skinMask, new Size(3, 3), 0);
-            Cv2.Erode(skinMask, skinMask, new Mat(), iterations: 1);
-            Cv2.Dilate(skinMask, skinMask, new Mat(), iterations: 1);
-
-            // Find contours on the skin mask
-            Point[][] contours;
-            HierarchyIndex[] hierarchy;
-            Cv2.FindContours(skinMask, out contours, out hierarchy, RetrievalModes.External, ContourApproximationModes.ApproxSimple);
-
-            // Draw rectangles around detected skin areas
-            foreach (var contour in contours)
-            {
-                var rect = Cv2.BoundingRect(contour);
-                Cv2.Rectangle(rgbaMat, rect, new Scalar(0, 255, 0), 2);
-            }
-
-            // OPTIONAL: Convert back to Texture2D and show result on screen
-            Texture2D debugTexture = MatToTexture(rgbaMat);
-            GetComponent<Renderer>().material.mainTexture = debugTexture;
+            var rect = Cv2.BoundingRect(contour);
+            Cv2.Rectangle(rgbaMat, rect, new Scalar(0, 255, 0), 2);
         }
 
+        // OPTIONAL: Convert back to Texture2D and show result on screen
+        Texture2D debugTexture = MatToTexture(rgbaMat);
+        GetComponent<Renderer>().material.mainTexture = debugTexture;
 
+        // TODO: Add skin pattern detection here
         // Once detected, call tattoo placement
     }
 }
