@@ -1,0 +1,1 @@
+C:\Users\Aira\Desktop\TattooVisionApp2-main\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\3p2w2g6q\obj\arm64-v8a

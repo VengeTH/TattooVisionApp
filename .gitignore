@@ -1,0 +1,186 @@
+# Unity Generated Files and Folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emory[Cc]aptures/
+
+# Visual Studio / Rider / VSCode
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Unity Specific
+*.unitypackage
+*.apk
+*.aab
+*.app
+*.xcarchive
+*.framework
+*.xcframework
+*.dylib
+*.so
+*.a
+*.o
+*.def
+*.exp
+*.lib
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.xml
+*.rsp
+*.asmdef
+*.asmref
+*.dll.mdb
+*.pdb.mdb
+*.dll.pdb
+*.pdb.dll
+*.mdb.dll
+*.mdb.pdb
+*.pdb.mdb
+*.dll.mdb.dll
+*.pdb.dll.mdb
+*.mdb.dll.pdb
+*.dll.pdb.mdb
+*.mdb.pdb.dll
+*.pdb.mdb.dll
+*.dll.mdb.pdb
+*.pdb.dll.pdb
+*.mdb.dll.dll
+*.dll.pdb.dll
+*.pdb.mdb.mdb
+*.mdb.pdb.pdb
+*.dll.dll.pdb
+*.pdb.pdb.dll
+*.mdb.mdb.pdb
+*.pdb.dll.dll
+*.dll.mdb.dll
+*.mdb.dll.mdb
+*.pdb.mdb.mdb
+*.mdb.pdb.pdb
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# OpenCV for Unity
+*.so
+*.dylib
+*.dll
+*.lib
+*.a
+*.o
+
+# Addressables
+**/Assets/AddressableAssetsData/*/*.bin*
+**/Assets/StreamingAssets/aa.meta
+
+# PlasticSCM
+**/Assets/Plugins/PlasticSCM*
+
+# Private files
+*.private
+*.private.meta
+^*.private.[0-9]+$
+^*.private.[0-9]+.meta$
+
+# Crash Reports
+sysinfo.txt
+crashlytics-build.properties
+
+# Gradle
+.gradle/
+gradle-app.apk
+
+# Android
+*.keystore
+*.jks
+proguard/
+
+# iOS
+*.ipa
+*.xcworkspace
+*.xcodeproj
+
+# WebGL
+*.data
+*.wasm
+*.js
+*.html
+*.mem
+
+# TextMesh Pro
+**/Assets/TextMesh Pro/Fonts/*.asset
+**/Assets/TextMesh Pro/Resources/*.asset
+
+# XR/AR
+*.arobject
+*.usdz
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Local configuration
+local.properties
+project.properties
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Python (if any)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# JetBrains Rider
+.idea/
+
+# Temporary files
+*.tmp
+*.temp

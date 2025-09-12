@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "718786259408",
+    "project_id": "tattoovision-2a589",
+    "storage_bucket": "tattoovision-2a589.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718786259408:android:bbd74e513ddf754067b1d5",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.Firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlgQXcT1Az3Y5zgzdGwUuyg-uPVW6Zk6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

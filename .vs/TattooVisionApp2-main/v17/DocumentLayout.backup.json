@@ -1,0 +1,204 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ImageUploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\ImageUploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Firebase\\FirebaseAuthManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Firebase\\FirebaseAuthManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\GalleryLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\GalleryLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ProfileMenuManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\ProfileMenuManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PanelController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\PanelController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Content Manager (script).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Content Manager (script).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PermissionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\PermissionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\MobileImageSlider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Dashboard\\MobileImageSlider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\TermsAndConditionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\TermsAndConditionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\References.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\References.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ImageUploader.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ImageUploader.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\ImageUploader.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ImageUploader.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\ImageUploader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T18:55:07.741Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Content Manager (script).cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Content Manager (script).cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Content Manager (script).cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Content Manager (script).cs",
+              "RelativeToolTip": "Assets\\Script\\Content Manager (script).cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T17:08:10.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PanelController.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PanelController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\PanelController.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PanelController.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\PanelController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:03:55.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProfileMenuManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ProfileMenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\ProfileMenuManager.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\ProfileMenuManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\ProfileMenuManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T16:05:30.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PermissionManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PermissionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\PermissionManager.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\PermissionManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\PermissionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T18:48:28.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FirebaseAuthManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Firebase\\FirebaseAuthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Firebase\\FirebaseAuthManager.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Firebase\\FirebaseAuthManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Firebase\\FirebaseAuthManager.cs",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAAAG4BAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T09:12:55.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\UIManager.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Script\\UIManager.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAKYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T07:15:43.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GalleryLoader.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\GalleryLoader.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\GalleryLoader.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\GalleryLoader.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\GalleryLoader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:11:12.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MobileImageSlider.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\MobileImageSlider.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Dashboard\\MobileImageSlider.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\Dashboard\\MobileImageSlider.cs",
+              "RelativeToolTip": "Assets\\Script\\Dashboard\\MobileImageSlider.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:07:58.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TermsAndConditionManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\TermsAndConditionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TermsAndConditionManager.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\TermsAndConditionManager.cs",
+              "RelativeToolTip": "Assets\\Script\\TermsAndConditionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T18:18:18.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "References.cs",
+              "DocumentMoniker": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\References.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\References.cs",
+              "ToolTip": "C:\\Users\\Aira\\Desktop\\TattooVisionApp2-main\\Assets\\Script\\References.cs",
+              "RelativeToolTip": "Assets\\Script\\References.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T09:22:45.035Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
