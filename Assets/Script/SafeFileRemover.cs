@@ -425,9 +425,13 @@ public class SafeFileRemoverEditor : Editor
         
         if (GUILayout.Button("Remove Files (Safe)", GUILayout.Height(30)))
         {
+            // Get the private dryRun field using reflection
+            var dryRunField = typeof(SafeFileRemover).GetField("dryRun", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            bool isDryRun = dryRunField != null && (bool)dryRunField.GetValue(remover);
+            
             if (EditorUtility.DisplayDialog("Confirm File Removal", 
                 "Are you sure you want to proceed with file removal? " +
-                (remover.dryRun ? "(This is a DRY RUN - no files will actually be deleted)" : 
+                (isDryRun ? "(This is a DRY RUN - no files will actually be deleted)" : 
                 "This will PERMANENTLY delete the selected files!"), 
                 "Yes", "Cancel"))
             {

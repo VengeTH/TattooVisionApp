@@ -31,14 +31,30 @@ public class ProfileMenuManager : MonoBehaviour
         logoutButton.onClick.AddListener(Logout);
         backButton.onClick.AddListener(CloseMenu); // ← Assign back button logic
 
+        // * Initialize Firebase auth
         auth = FirebaseAuth.DefaultInstance;
-        if (auth.CurrentUser != null && !string.IsNullOrEmpty(auth.CurrentUser.DisplayName))
+        
+        // * Check if user is authenticated
+        if (auth.CurrentUser != null)
         {
-            usernameText.text = auth.CurrentUser.DisplayName;
+            if (!string.IsNullOrEmpty(auth.CurrentUser.DisplayName))
+            {
+                usernameText.text = auth.CurrentUser.DisplayName;
+            }
+            else if (!string.IsNullOrEmpty(auth.CurrentUser.Email))
+            {
+                usernameText.text = auth.CurrentUser.Email;
+            }
+            else
+            {
+                usernameText.text = "Welcome!";
+            }
         }
         else
         {
-            usernameText.text = "Welcome!";
+            // * No authenticated user, show guest mode
+            usernameText.text = "Guest User";
+            Debug.Log("ProfileMenuManager: No authenticated user, running in guest mode");
         }
     }
 
@@ -85,6 +101,6 @@ public class ProfileMenuManager : MonoBehaviour
 
         Debug.Log("Logging out...");
         auth.SignOut();
-        SceneManager.LoadScene("AppScene"); // Replace with your login scene name
+        SceneManager.LoadScene("Dashboard"); // Return to Dashboard (which will handle auth check)
     }
 }

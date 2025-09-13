@@ -1,0 +1,12 @@
+# ninja log v5
+67	342	7794575464867515	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	cc1b3b6e09977be3
+344	640	7794575467331468	D:/Programming/Projects/Commission/TattooVisionApp2-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2v631l1h/obj/armeabi-v7a/libswappywrapper.so	4fb724e69a948ebc
+46	1845	7794575479845661	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	dc70518eb256ff1c
+29	1853	7794575479340120	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	622b4c0d84578d09
+1	1857	7794575479396809	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	aff5d36e8dc4cf4f
+37	1879	7794575480180193	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	c6f26d0ca75ab86b
+7	2036	7794575480587299	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	822871e92786d1f9
+56	2139	7794575482138249	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d9c6cce44c4a20b5
+22	2255	7794575483808839	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1d56742a6d4ba942
+14	2337	7794575484757015	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b23c556a3782293
+2337	2442	7794575485901270	D:/Programming/Projects/Commission/TattooVisionApp2-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2v631l1h/obj/armeabi-v7a/libgame.so	f3ce9820519fd40c
