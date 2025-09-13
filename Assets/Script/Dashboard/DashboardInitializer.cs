@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Firebase;
-using Firebase.Auth;
-using Firebase.Extensions;
 using System.Collections;
 
 /// <summary>
 /// * Initializes the Dashboard scene and handles authentication state
 /// * Provides fallback for unauthenticated users
 /// * Includes emergency fallback to prevent black screens
+/// * Works with or without Firebase
 /// </summary>
 public class DashboardInitializer : MonoBehaviour
 {
@@ -16,12 +14,12 @@ public class DashboardInitializer : MonoBehaviour
     [SerializeField] private bool allowGuestMode = true;
     [SerializeField] private string loginSceneName = "Login";
     [SerializeField] private float initializationTimeout = 10f; // * Emergency timeout
+    [SerializeField] private bool useFirebase = false; // * Set to true if Firebase is installed
 
     [Header("UI Elements")]
     [SerializeField] private GameObject guestModePanel;
     [SerializeField] private GameObject authenticatedUserPanel;
 
-    private FirebaseAuth auth;
     private bool firebaseInitialized = false;
     private bool initializationComplete = false;
 
@@ -36,8 +34,15 @@ public class DashboardInitializer : MonoBehaviour
 
     IEnumerator InitializeDashboard()
     {
-        // * Initialize Firebase
-        yield return StartCoroutine(InitializeFirebase());
+        // * Try to initialize Firebase if enabled
+        if (useFirebase)
+        {
+            yield return StartCoroutine(InitializeFirebase());
+        }
+        else
+        {
+            Debug.Log("DashboardInitializer: Firebase disabled, using guest mode");
+        }
 
         // * Check authentication status
         CheckAuthenticationStatus();
@@ -50,19 +55,38 @@ public class DashboardInitializer : MonoBehaviour
     {
         Debug.Log("DashboardInitializer: Initializing Firebase...");
 
-        var task = FirebaseApp.CheckAndFixDependenciesAsync();
-        yield return new WaitUntil(() => task.IsCompleted);
+        bool hasError = false;
+        try
+        {
+#if FIREBASE_INSTALLED
+            var task = Firebase.FirebaseApp.CheckAndFixDependenciesAsync();
+            yield return new WaitUntil(() => task.IsCompleted);
 
-        if (task.Exception != null)
-        {
-            Debug.LogError($"DashboardInitializer: Firebase initialization failed: {task.Exception}");
+            if (task.Exception != null)
+            {
+                Debug.LogError($"DashboardInitializer: Firebase initialization failed: {task.Exception}");
+                firebaseInitialized = false;
+            }
+            else
+            {
+                Debug.Log("DashboardInitializer: Firebase initialized successfully");
+                firebaseInitialized = true;
+            }
+#else
+            Debug.Log("DashboardInitializer: Firebase assemblies not found, running in guest mode");
             firebaseInitialized = false;
+#endif
         }
-        else
+        catch (System.Exception e)
         {
-            Debug.Log("DashboardInitializer: Firebase initialized successfully");
-            auth = FirebaseAuth.DefaultInstance;
-            firebaseInitialized = true;
+            Debug.LogError($"DashboardInitializer: Firebase initialization error: {e.Message}");
+            firebaseInitialized = false;
+            hasError = true;
+        }
+
+        if (hasError)
+        {
+            yield return null;
         }
     }
 
@@ -70,9 +94,9 @@ public class DashboardInitializer : MonoBehaviour
     {
         Debug.Log("DashboardInitializer: Checking authentication status...");
 
-        if (firebaseInitialized && auth != null && auth.CurrentUser != null)
+        if (firebaseInitialized && CheckFirebaseUser())
         {
-            Debug.Log($"DashboardInitializer: User authenticated: {auth.CurrentUser.Email}");
+            Debug.Log("DashboardInitializer: User authenticated");
             ShowAuthenticatedUserUI();
         }
         else
@@ -90,6 +114,23 @@ public class DashboardInitializer : MonoBehaviour
                 RedirectToLogin();
             }
         }
+    }
+
+    bool CheckFirebaseUser()
+    {
+#if FIREBASE_INSTALLED
+        try
+        {
+            var auth = Firebase.FirebaseAuth.DefaultInstance;
+            return auth != null && auth.CurrentUser != null;
+        }
+        catch
+        {
+            return false;
+        }
+#else
+        return false;
+#endif
     }
 
     void ShowAuthenticatedUserUI()

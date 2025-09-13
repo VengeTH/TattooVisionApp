@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Firebase;
-using Firebase.Auth;
 using TMPro;
 using System.Collections;
 using System.IO;
@@ -20,7 +18,9 @@ public class ProfileMenuManager : MonoBehaviour
     public TextMeshProUGUI usernameText;
     public Image profileImage;
 
-    private FirebaseAuth auth;
+    [Header("Configuration")]
+    [SerializeField] private bool useFirebase = false; // * Set to true if Firebase is installed
+    [SerializeField] private string guestUsername = "Guest User";
 
     void Start()
     {
@@ -31,31 +31,66 @@ public class ProfileMenuManager : MonoBehaviour
         logoutButton.onClick.AddListener(Logout);
         backButton.onClick.AddListener(CloseMenu); // ← Assign back button logic
 
-        // * Initialize Firebase auth
-        auth = FirebaseAuth.DefaultInstance;
-        
-        // * Check if user is authenticated
-        if (auth.CurrentUser != null)
+        // * Initialize user display
+        InitializeUserDisplay();
+    }
+
+    void InitializeUserDisplay()
+    {
+        if (useFirebase && CheckFirebaseUser())
         {
-            if (!string.IsNullOrEmpty(auth.CurrentUser.DisplayName))
+            // * Try to get user info from Firebase
+            try
             {
-                usernameText.text = auth.CurrentUser.DisplayName;
+#if FIREBASE_INSTALLED
+                var auth = Firebase.FirebaseAuth.DefaultInstance;
+                var user = auth.CurrentUser;
+
+                if (user != null)
+                {
+                    if (!string.IsNullOrEmpty(user.DisplayName))
+                    {
+                        usernameText.text = user.DisplayName;
+                    }
+                    else if (!string.IsNullOrEmpty(user.Email))
+                    {
+                        usernameText.text = user.Email;
+                    }
+                    else
+                    {
+                        usernameText.text = "Welcome!";
+                    }
+                    Debug.Log("ProfileMenuManager: User authenticated");
+                    return;
+                }
+#endif
             }
-            else if (!string.IsNullOrEmpty(auth.CurrentUser.Email))
+            catch (System.Exception e)
             {
-                usernameText.text = auth.CurrentUser.Email;
-            }
-            else
-            {
-                usernameText.text = "Welcome!";
+                Debug.LogError($"ProfileMenuManager: Firebase error: {e.Message}");
             }
         }
-        else
+
+        // * Fallback to guest mode
+        usernameText.text = guestUsername;
+        Debug.Log("ProfileMenuManager: Running in guest mode");
+    }
+
+    bool CheckFirebaseUser()
+    {
+#if FIREBASE_INSTALLED
+        try
         {
-            // * No authenticated user, show guest mode
-            usernameText.text = "Guest User";
-            Debug.Log("ProfileMenuManager: No authenticated user, running in guest mode");
+            var auth = Firebase.FirebaseAuth.DefaultInstance;
+            return auth != null && auth.CurrentUser != null;
         }
+        catch
+        {
+            return false;
+        }
+#else
+        return false;
+#endif
     }
 
     void ToggleMenu()
@@ -100,7 +135,32 @@ public class ProfileMenuManager : MonoBehaviour
         hamburgerMenuPanel.SetActive(false);
 
         Debug.Log("Logging out...");
-        auth.SignOut();
-        SceneManager.LoadScene("Dashboard"); // Return to Dashboard (which will handle auth check)
+
+        // * Try Firebase logout if available
+        if (useFirebase)
+        {
+            try
+            {
+#if FIREBASE_INSTALLED
+                var auth = Firebase.FirebaseAuth.DefaultInstance;
+                if (auth != null)
+                {
+                    auth.SignOut();
+                    Debug.Log("ProfileMenuManager: Firebase logout successful");
+                }
+#endif
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"ProfileMenuManager: Firebase logout error: {e.Message}");
+            }
+        }
+
+        // * Reset to guest mode and reload dashboard
+        usernameText.text = guestUsername;
+        Debug.Log("ProfileMenuManager: Returned to guest mode");
+
+        // * Optionally reload the scene to reset state
+        // SceneManager.LoadScene("Dashboard");
     }
 }
