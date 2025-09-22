@@ -11,9 +11,9 @@ using UnityEditor;
 public class SafeFileRemover : MonoBehaviour
 {
     [Header("Safe File Removal Tool")]
-    [SerializeField] private bool createBackupBeforeRemoval = true;
-    [SerializeField] private string backupDirectory = "ProjectBackup";
-    [SerializeField] private bool dryRun = true; // Simulate removal without actually deleting
+    [SerializeField] public bool createBackupBeforeRemoval = true;
+    [SerializeField] public string backupDirectory = "ProjectBackup";
+    [SerializeField] public bool dryRun = true; // Simulate removal without actually deleting
     
     private List<string> filesToRemove = new List<string>();
     private List<string> backedUpFiles = new List<string>();
