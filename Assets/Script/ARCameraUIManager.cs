@@ -16,33 +16,33 @@ public class ARCameraUIManager : MonoBehaviour
     public ARCameraManager arCameraManager;
     public ARRaycastManager arRaycastManager;
     public ARPlaneManager arPlaneManager;
-    
+
     [Header("UI Components")]
     public GameObject cameraUIPanel; // Optional: the white panel to show/hide
     public Button backButton;
     public TMP_Text statusText;
     public GameObject loadingPanel;
-    
+
     [Header("Managers")]
     public ARTattooManager tattooManager;
     public SkinScanner skinScanner;
-    
+
     private bool isARInitialized = false;
 
     void Start()
     {
         Debug.Log("ARCameraUIManager Start called");
         InitializeARComponents();
-        
+
         if (backButton != null)
         {
             backButton.onClick.AddListener(OnBackButtonClicked);
         }
-        
+
         // * Begin async initialization sequence to request permissions and start AR
         StartCoroutine(BeginARInitialization());
     }
-    
+
     void OnEnable()
     {
         // Subscribe to AR session state changes
@@ -51,13 +51,13 @@ public class ARCameraUIManager : MonoBehaviour
             ARSession.stateChanged += OnARSessionStateChanged;
         }
     }
-    
+
     void StartAR()
     {
         // Show loading panel
         if (loadingPanel != null)
             loadingPanel.SetActive(true);
-        
+
         // Ensure AR components are properly set up
         if (arSession == null)
         {
@@ -70,20 +70,20 @@ public class ARCameraUIManager : MonoBehaviour
                 arSession = sessionObj.AddComponent<ARSession>();
             }
         }
-        
+
         if (xrOrigin == null)
         {
             GameObject originObj = GameObject.Find("XR Origin");
             if (originObj == null)
                 originObj = GameObject.Find("AR Session Origin"); // Try old name for compatibility
-            
+
             if (originObj != null)
                 xrOrigin = originObj.GetComponent<XROrigin>();
             else
             {
                 originObj = new GameObject("XR Origin");
                 xrOrigin = originObj.AddComponent<XROrigin>();
-                
+
                 // Add AR camera
                 GameObject cameraObj = new GameObject("AR Camera");
                 cameraObj.transform.SetParent(originObj.transform);
@@ -98,7 +98,7 @@ public class ARCameraUIManager : MonoBehaviour
                 }
             }
         }
-        
+
         // Ensure existing camera has ARCameraBackground
         if (arCameraManager != null)
         {
@@ -108,21 +108,21 @@ public class ARCameraUIManager : MonoBehaviour
                 camGO.AddComponent<ARCameraBackground>();
             }
         }
-        
+
         // Enable AR components
         if (arSession != null)
             arSession.enabled = true;
-        
+
         if (xrOrigin != null)
             xrOrigin.gameObject.SetActive(true);
-        
+
         // Enable plane detection
         if (arPlaneManager != null)
         {
             arPlaneManager.enabled = true;
             arPlaneManager.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal | UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Vertical;
         }
-        
+
         // Hide UI panel to show camera feed
         if (cameraUIPanel != null)
             cameraUIPanel.SetActive(false);
@@ -131,33 +131,33 @@ public class ARCameraUIManager : MonoBehaviour
     void OnDisable()
     {
         StopAR();
-        
+
         // Unsubscribe from AR session state changes
         ARSession.stateChanged -= OnARSessionStateChanged;
     }
-    
+
     void StopAR()
     {
         // Stop AR system
         if (arSession != null)
             arSession.enabled = false;
-        
+
         if (xrOrigin != null)
             xrOrigin.gameObject.SetActive(false);
-        
+
         if (arPlaneManager != null)
             arPlaneManager.enabled = false;
-        
+
         if (cameraUIPanel != null)
             cameraUIPanel.SetActive(true);
     }
-    
+
     void InitializeARComponents()
     {
         // Find or create AR components
         if (arCameraManager == null)
             arCameraManager = FindObjectOfType<ARCameraManager>();
-        
+
         if (arRaycastManager == null)
         {
             arRaycastManager = FindObjectOfType<ARRaycastManager>();
@@ -166,7 +166,7 @@ public class ARCameraUIManager : MonoBehaviour
                 arRaycastManager = xrOrigin.gameObject.AddComponent<ARRaycastManager>();
             }
         }
-        
+
         if (arPlaneManager == null)
         {
             arPlaneManager = FindObjectOfType<ARPlaneManager>();
@@ -175,7 +175,7 @@ public class ARCameraUIManager : MonoBehaviour
                 arPlaneManager = xrOrigin.gameObject.AddComponent<ARPlaneManager>();
             }
         }
-        
+
         // Connect managers
         if (tattooManager != null)
         {
@@ -183,7 +183,7 @@ public class ARCameraUIManager : MonoBehaviour
             tattooManager.arPlaneManager = arPlaneManager;
             tattooManager.arCamera = Camera.main;
         }
-        
+
         if (skinScanner != null)
         {
             skinScanner.cameraManager = arCameraManager;
@@ -191,7 +191,7 @@ public class ARCameraUIManager : MonoBehaviour
             skinScanner.tattooManager = tattooManager;
         }
     }
-    
+
     System.Collections.IEnumerator BeginARInitialization()
     {
         // * Request camera permission on Android
@@ -217,7 +217,7 @@ public class ARCameraUIManager : MonoBehaviour
                 Permission.RequestUserPermission("android.permission.READ_EXTERNAL_STORAGE");
             }
         }
-        
+
         // Wait for camera permission result explicitly
         float waitTime = 0f;
         while (!Permission.HasUserAuthorizedPermission(Permission.Camera) && waitTime < 10f)
@@ -225,7 +225,7 @@ public class ARCameraUIManager : MonoBehaviour
             waitTime += Time.deltaTime;
             yield return null;
         }
-        
+
         if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
             if (statusText != null) statusText.text = "Camera permission denied. Enable it to use AR.";
@@ -233,17 +233,17 @@ public class ARCameraUIManager : MonoBehaviour
             yield break;
         }
 #endif
-        
+
         // * Check AR availability and request install if needed
         UpdateStatus(ARSessionState.CheckingAvailability);
         yield return ARSession.CheckAvailability();
-        
+
         if (ARSession.state == ARSessionState.NeedsInstall)
         {
             UpdateStatus(ARSessionState.Installing);
             yield return ARSession.Install();
         }
-        
+
         if (ARSession.state == ARSessionState.Ready || ARSession.state == ARSessionState.SessionInitializing || ARSession.state == ARSessionState.SessionTracking)
         {
             StartAR();
@@ -257,26 +257,26 @@ public class ARCameraUIManager : MonoBehaviour
             yield break;
         }
     }
-    
+
     void OnARSessionStateChanged(ARSessionStateChangedEventArgs args)
     {
         UpdateStatus(args.state);
-        
+
         if (args.state == ARSessionState.SessionTracking)
         {
             isARInitialized = true;
-            
+
             // Hide loading panel
             if (loadingPanel != null)
                 loadingPanel.SetActive(false);
         }
     }
-    
+
     void UpdateStatus(ARSessionState state)
     {
         Debug.Log("AR State: " + state);
         if (statusText == null) return;
-        
+
         switch (state)
         {
             case ARSessionState.None:
@@ -308,7 +308,7 @@ public class ARCameraUIManager : MonoBehaviour
                 break;
         }
     }
-    
+
     void OnBackButtonClicked()
     {
         // Navigate back to dashboard or gallery
@@ -319,7 +319,7 @@ public class ARCameraUIManager : MonoBehaviour
             Debug.Log("Navigate back from AR Camera");
         }
     }
-    
+
     public bool IsARReady()
     {
         return isARInitialized && ARSession.state == ARSessionState.SessionTracking;
