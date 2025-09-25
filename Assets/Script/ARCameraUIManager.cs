@@ -31,6 +31,7 @@ public class ARCameraUIManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ARCameraUIManager Start called");
         InitializeARComponents();
         
         if (backButton != null)
@@ -273,6 +274,7 @@ public class ARCameraUIManager : MonoBehaviour
     
     void UpdateStatus(ARSessionState state)
     {
+        Debug.Log("AR State: " + state);
         if (statusText == null) return;
         
         switch (state)

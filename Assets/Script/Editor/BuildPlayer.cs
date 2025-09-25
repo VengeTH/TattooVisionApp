@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ public class BuildPlayer : MonoBehaviour
     private static readonly string AAB_NAME = "TattooVision.aab";
     
     // * Package settings
-    private static readonly string PACKAGE_NAME = "com.yourdomain.tattoovision";
+    private static readonly string PACKAGE_NAME = "com.DefaultCompany.Firebase";
     private static readonly string PRODUCT_NAME = "TattooVision";
     
     [MenuItem("Build/Android APK (Development)")]
@@ -155,7 +156,7 @@ public class BuildPlayer : MonoBehaviour
         });
         
         // * Scripting settings
-        PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64 | AndroidArchitecture.ARMv7 | AndroidArchitecture.X86_64;
         
         // * Permissions for AR and camera
@@ -325,7 +326,7 @@ public class BuildPlayer : MonoBehaviour
         Debug.Log($"   Build Number: {PlayerSettings.Android.bundleVersionCode}");
         Debug.Log($"   Min SDK: {PlayerSettings.Android.minSdkVersion}");
         Debug.Log($"   Target SDK: {PlayerSettings.Android.targetSdkVersion}");
-        Debug.Log($"   Scripting Backend: {PlayerSettings.GetScriptingBackend(BuildTargetGroup.Android)}");
+        Debug.Log($"   Scripting Backend: {PlayerSettings.GetScriptingBackend(NamedBuildTarget.Android)}");
         Debug.Log($"   Target Architectures: {PlayerSettings.Android.targetArchitectures}");
         
         var graphicsAPIs = PlayerSettings.GetGraphicsAPIs(BuildTarget.Android);
