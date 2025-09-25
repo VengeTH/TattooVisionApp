@@ -1,0 +1,5 @@
+D:/Programming/Projects/Commission/TattooVisionApp2-main/.utmp/RelWithDebInfo/2v631l1h/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Programming/Projects/Commission/TattooVisionApp2-main/.utmp/RelWithDebInfo/2v631l1h/arm64-v8a/CMakeFiles/rebuild_cache.dir
+D:/Programming/Projects/Commission/TattooVisionApp2-main/.utmp/RelWithDebInfo/2v631l1h/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/Programming/Projects/Commission/TattooVisionApp2-main/.utmp/RelWithDebInfo/2v631l1h/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+D:/Programming/Projects/Commission/TattooVisionApp2-main/.utmp/RelWithDebInfo/2v631l1h/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

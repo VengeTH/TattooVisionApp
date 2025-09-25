@@ -3,6 +3,10 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 using TMPro;
 using Unity.XR.CoreUtils;
+using UnityEngine.XR.ARSubsystems;
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
 
 public class ARCameraUIManager : MonoBehaviour
 {
@@ -33,12 +37,13 @@ public class ARCameraUIManager : MonoBehaviour
         {
             backButton.onClick.AddListener(OnBackButtonClicked);
         }
+        
+        // * Begin async initialization sequence to request permissions and start AR
+        StartCoroutine(BeginARInitialization());
     }
     
     void OnEnable()
     {
-        StartAR();
-        
         // Subscribe to AR session state changes
         if (ARSession.state != ARSessionState.None)
         {
@@ -85,6 +90,21 @@ public class ARCameraUIManager : MonoBehaviour
                 arCam.tag = "MainCamera";
                 arCameraManager = cameraObj.AddComponent<ARCameraManager>();
                 arCameraManager.requestedFacingDirection = CameraFacingDirection.World;
+                // * Ensure ARCameraBackground exists to render the camera feed
+                if (cameraObj.GetComponent<ARCameraBackground>() == null)
+                {
+                    cameraObj.AddComponent<ARCameraBackground>();
+                }
+            }
+        }
+        
+        // Ensure existing camera has ARCameraBackground
+        if (arCameraManager != null)
+        {
+            var camGO = arCameraManager.gameObject;
+            if (camGO.GetComponent<ARCameraBackground>() == null)
+            {
+                camGO.AddComponent<ARCameraBackground>();
             }
         }
         
@@ -168,6 +188,72 @@ public class ARCameraUIManager : MonoBehaviour
             skinScanner.cameraManager = arCameraManager;
             skinScanner.arRaycastManager = arRaycastManager;
             skinScanner.tattooManager = tattooManager;
+        }
+    }
+    
+    System.Collections.IEnumerator BeginARInitialization()
+    {
+        // * Request camera permission on Android
+#if UNITY_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+        // Also request media permissions as needed by the app (keep per user request)
+        // Android 13+ scoped images permission
+        var sdkInt = new AndroidJavaClass("android.os.Build$VERSION").GetStatic<int>("SDK_INT");
+        if (sdkInt >= 33)
+        {
+            if (!Permission.HasUserAuthorizedPermission("android.permission.READ_MEDIA_IMAGES"))
+            {
+                Permission.RequestUserPermission("android.permission.READ_MEDIA_IMAGES");
+            }
+        }
+        else
+        {
+            if (!Permission.HasUserAuthorizedPermission("android.permission.READ_EXTERNAL_STORAGE"))
+            {
+                Permission.RequestUserPermission("android.permission.READ_EXTERNAL_STORAGE");
+            }
+        }
+        
+        // Wait for camera permission result explicitly
+        float waitTime = 0f;
+        while (!Permission.HasUserAuthorizedPermission(Permission.Camera) && waitTime < 10f)
+        {
+            waitTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            if (statusText != null) statusText.text = "Camera permission denied. Enable it to use AR.";
+            if (loadingPanel != null) loadingPanel.SetActive(false);
+            yield break;
+        }
+#endif
+        
+        // * Check AR availability and request install if needed
+        UpdateStatus(ARSessionState.CheckingAvailability);
+        yield return ARSession.CheckAvailability();
+        
+        if (ARSession.state == ARSessionState.NeedsInstall)
+        {
+            UpdateStatus(ARSessionState.Installing);
+            yield return ARSession.Install();
+        }
+        
+        if (ARSession.state == ARSessionState.Ready || ARSession.state == ARSessionState.SessionInitializing || ARSession.state == ARSessionState.SessionTracking)
+        {
+            StartAR();
+        }
+        else
+        {
+            // Unsupported or failed
+            UpdateStatus(ARSession.state);
+            if (loadingPanel != null)
+                loadingPanel.SetActive(false);
+            yield break;
         }
     }
     

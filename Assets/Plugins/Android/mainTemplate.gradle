@@ -12,7 +12,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-unity:12.8.0' // Assets/Firebase/Editor/AuthDependencies.xml:20
     implementation 'com.google.firebase:firebase-common:21.0.0' // Assets/Firebase/Editor/AppDependencies.xml:13
 // Android Resolver Dependencies End
-**DEPS**}
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.games:games-activity:1.2.2'
+}
 
 // Android Resolver Exclusions Start
 android {

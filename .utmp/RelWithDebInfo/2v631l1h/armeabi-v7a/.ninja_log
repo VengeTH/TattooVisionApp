@@ -1,0 +1,5 @@
+# ninja log v5
+2	175	7805133648053816	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	cc1b3b6e09977be3
+177	330	7805133649583202	D:/Programming/Projects/Commission/TattooVisionApp2-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2v631l1h/obj/armeabi-v7a/libswappywrapper.so	4fb724e69a948ebc
+3	210	7805141499535240	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	cc1b3b6e09977be3
+210	350	7805141500774156	D:/Programming/Projects/Commission/TattooVisionApp2-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2v631l1h/obj/armeabi-v7a/libswappywrapper.so	4fb724e69a948ebc
